@@ -1,0 +1,22 @@
+#Homebrew
+export PATH=/usr/local/bin:$PATH
+
+# Latex
+export PATH=/Library/TeX/texbin:$PATH
+
+# Adding adb tools to the path
+ADB_HOME=$HOME/Library/Android/sdk/platform-tools/
+export PATH="$ADB_HOME:$PATH"
+
+# Hide computer name and user name from terminal
+#export PS1="\W \$"
+export PS1='\[\e[32m\]\u:\w\[\e[0m\] '
+
+# Eclipse Home Folder
+export ECLIPSE_HOME=$HOME/Eclipse.app/Contents/Eclipse
+
+# Importing bash_aliases
+if [ -f ~/.bash/bash_aliases ]; then
+    source ~/.bash/bash_aliases
+fi
+

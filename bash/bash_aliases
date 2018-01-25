@@ -1,0 +1,4 @@
+alias eclimd="$(echo $ECLIPSE_HOME)/eclimd -b" 
+
+# overriding ipython default mode to vi-mode
+alias ipython="ipython --TerminalInteractiveShell.editing_mode=vi"

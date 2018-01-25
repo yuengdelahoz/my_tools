@@ -1,0 +1,112 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+
+call vundle#begin()
+
+" " let Vundle manage Vundle, required
+" Core Plugins
+Plugin 'VundleVim/Vundle.vim' 
+Plugin 'scrooloose/nerdtree.git'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'scrooloose/nerdcommenter'
+"Plugin 'vim-latex/vim-latex'
+Plugin 'lervag/vimtex'
+Plugin 'StanAngeloff/php.vim'
+Plugin 'elzr/vim-json'
+
+
+" Color Scheme
+Plugin 'dracula/vim'
+Plugin 'vim-scripts/PapayaWhip'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'vim-airline/vim-airline-themes'
+
+" Auto Complete 
+Plugin 'Valloric/YouCompleteMe'
+"Plugin 'artur-shaik/vim-javacomplete2'
+Plugin 'reedes/vim-pencil'
+
+
+" Templates
+"Plugin 'honza/vim-snippets'
+Plugin 'aperezdc/vim-template'
+
+"Python Folding
+Plugin 'tmhedberg/SimpylFold'
+
+call vundle#end()            " required
+
+" All of your Plugins must be added before the following line
+filetype plugin indent on    " required
+syntax on
+
+set number	
+set linebreak	
+set textwidth=500	" Line wrap (number of cols)
+set showmatch	" Highlight matching brace
+set visualbell	" Use visual bell (no beeping)
+ 
+set hlsearch	" Highlight all search results
+set smartcase	" Enable smart-case search
+set ignorecase	" Always case-insensitive
+set incsearch	" Searches for strings incrementally
+ 
+set autoindent	" Auto-indent new lines
+set shiftwidth=4	" Number of auto-indent spaces
+set smartindent	" Enable smart-indent
+set smarttab	" Enable smart-tabs
+"set softtabstop=4	" Number of spaces per Tab
+set listchars=tab:\|\  
+set list
+
+"" Advanced
+set ruler	" Show row and column ruler information
+
+let mapleader = "\<Space>"
+
+" Use ctrl-[hjkl] to select the active split!
+nmap <silent> <leader>k :wincmd k<CR>
+nmap <silent> <leader>j :wincmd j<CR>
+nmap <silent> <leader>h :wincmd h<CR>
+nmap <silent> <leader>l :wincmd l<CR>
+
+colorscheme dracula
+
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+set backspace=2 
+
+if $TERM_PROGRAM =~ "iTerm"
+     let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
+     let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
+endif
+
+let g:EclimCompletionMethod = 'omnifunc'
+
+"Pencil softwrap
+let g:pencil#wrapModeDefault = 'soft'   " default is 'hard'
+augroup pencil
+  autocmd!
+  autocmd FileType markdown,mkd call pencil#init()
+  autocmd FileType text,tex         call pencil#init()
+augroup END
+
+"let g:tex_flavor='xelatex'
+"let g:Tex_CompileRule_pdf = 'xelatex --synctex=-1 -src-specials -interaction=nonstopmode -file-line-error-style $*'
+"let g:Tex_DefaultTargetFormat='pdf'
+"let g:Tex_MultipleCompileFormats='pdf,bibtex,pdf'
+"let g:Tex_ViewRule_pdf =  'Preview -reuse-instance '
+
+"setting default encoding to utf-8
+set fileencodings=utf-8
+set encoding=utf-8
+set t_Co=256
+set grepprg=grep\ -nH\ $*
