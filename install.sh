@@ -6,9 +6,21 @@
 # Distributed under terms of the MIT license.
 #
 
-#VIM
-#Install Plugin manager
 cd ~
+flag=$1
+if [ "$flag" = "--delete-all" ]
+then
+    echo "Deleting eveything in ~/.vim* ~/.inputrc ~/.screenrc vim/bundle"
+    rm  ~/.vim*
+    rm  ~/.inputrc
+    rm  ~/.screenrc
+    #rm -rf vim/bundle
+else
+    echo "Running script without flag --delete-all"
+fi
+
+#VIM
+#Install plugins
 ln -s my_tools/vim ~/.vim
 ln -s .vim/vimrc/vimrc .vimrc
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
