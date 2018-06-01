@@ -11,10 +11,9 @@ flag=$1
 if [ "$flag" = "--delete-all" ]
 then
     echo "Deleting eveything in ~/.vim* ~/.inputrc ~/.screenrc vim/bundle"
-    rm  ~/.vim*
-    rm  ~/.inputrc
-    rm  ~/.screenrc
-    #rm -rf vim/bundle
+    rm -rf ~/.vim*
+    rm -rf ~/.inputrc
+    rm -rf ~/.screenrc
 else
     echo "Running script without flag --delete-all"
 fi
