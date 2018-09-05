@@ -12,8 +12,9 @@ export PATH="$ADB_HOME:$PATH"
 #export PS1="\W \$"
 export PS1='\[\e[32m\]\u:\w\[\e[0m\] '
 
-# Eclipse Home Folder
-export ECLIPSE_HOME=$HOME/Eclipse.app/Contents/Eclipse
+# Enabling Colors in iterm
+export CLICOLOR=1
+export TERM=xterm-256color
 
 # Importing bash_aliases
 if [ -f ~/.bash/bash_aliases ]; then
