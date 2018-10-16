@@ -37,5 +37,5 @@ ln -s my_tools/screenrc/screenrc .screenrc
 
 # BASH
 echo "Setting up bash"
-ln -s my_tools/bash/bash_profile bash_profile
-ln -s my_tools/bash/bash_aliases bash_aliases
+ln -s my_tools/bash/bash_profile .bash_profile
+ln -s my_tools/bash/bash_aliases .bash_aliases
