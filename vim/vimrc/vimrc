@@ -110,3 +110,10 @@ set fileencodings=utf-8
 set encoding=utf-8
 set t_Co=256
 set grepprg=grep\ -nH\ $*
+
+"YouComplete key mappings
+"Go to function definition
+nnoremap <silent> <leader>gd :YcmCompleter GoToDefinition<CR>
+"Go to variable declaration
+nnoremap <silent> <leader>gv :YcmCompleter GoToDeclaration<CR>
+
