@@ -38,6 +38,9 @@ Plugin 'aperezdc/vim-template'
 "Python Folding
 Plugin 'tmhedberg/SimpylFold'
 
+"SQL Formatter
+Plugin 'vim-scripts/SQLUtilities'
+
 call vundle#end()            " required
 
 " All of your Plugins must be added before the following line
