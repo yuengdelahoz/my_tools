@@ -59,7 +59,10 @@ set ignorecase	" Always case-insensitive
 set incsearch	" Searches for strings incrementally
  
 set autoindent	" Auto-indent new lines
+set noexpandtab " Use tabs instead of stinky spaces
 set shiftwidth=4	" Number of auto-indent spaces
+set tabstop=4
+set softtabstop=4
 set smartindent	" Enable smart-indent
 set smarttab	" Enable smart-tabs
 "set softtabstop=4	" Number of spaces per Tab
