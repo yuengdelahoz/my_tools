@@ -1,10 +1,18 @@
-#! /bin/sh
+#! /bin/bash
 #
 # run_mytools_setup.sh
 # Copyright (C) 2018 yueng.delahoz <yueng.delahoz@lms-02-prod-us-e1>
 #
 # Distributed under terms of the MIT license.
 #
+
+sudo apt install -y build-essential \
+	vim \
+	cmake \
+	git \
+	wget \
+	screen
+
 
 cd ~
 flag=$1
