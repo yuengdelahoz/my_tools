@@ -41,3 +41,13 @@ Stop and remove all containers
 ------------------------------
 docker stop $(docker ps -a -q)
 docker rm $(docker ps -a -q)
+
+
+BUILD IMAGE
+---------------------------------------------------
+docker build -t <name_of_image> <path_to_docker_file>
+
+Run image on container with Nvidia-GPU support
+------------------------------------------------------------------------------------------------------
+docker run --runtime=nvidia -e NVIDIA_VISIBLE_DEVICES="1" --rm -it -v <local_path>:<path_in_container> <image_name>
+

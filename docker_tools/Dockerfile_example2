@@ -1,0 +1,11 @@
+FROM ubuntu
+LABEL mantainer="Yueng De La Hoz <ysdelahoz@gmail.com>"
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN apt update
+RUN apt-get install -y python3-opencv
+
+WORKDIR /home/developer
+RUN apt -y autoremove
+CMD ["bash"]
+
