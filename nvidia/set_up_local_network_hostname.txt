@@ -1,0 +1,20 @@
+set_up_local_network_hostname.txt
+
+:Author: yuengdelahoz
+:Email: yuengdelahoz@Yueng
+:Date: 2021-02-03 17:25
+
+Follow the below instructions so you can ssh/ping a device within your own local network
+
+1.
+update /etc/systemd/resolved.conf
+MulticastDNS=no -> MulticastDNS=yes
+
+2.
+sudo systemd-resolve --set-mdns=yes --interface=<interface> 
+
+3.
+sudo systemctl restart systems-resolved
+
+4. test
+ping <hostname>.local
