@@ -6,12 +6,16 @@
 # Distributed under terms of the MIT license.
 #
 
+sudo add-apt-repository ppa:jonathonf/vim
+sudo apt update
 sudo apt install -y build-essential \
 	vim \
 	cmake \
 	git \
 	wget \
-	screen
+	screen \
+	python3-dev
+sudo add-apt-repository --remove ppa:jonathonf/vim
 
 
 cd ~
