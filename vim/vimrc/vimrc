@@ -1,8 +1,8 @@
 set exrc  "This option forces Vim to source .vimrc file if it present in working directory.
 set secure "This option will restrict usage of some commands in non-default .vimrc files
 
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible			  " be iMproved, required
+filetype off				  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -36,7 +36,7 @@ Plugin 'reedes/vim-pencil'
 
 " Templates
 "Plugin 'honza/vim-snippets'
-Plugin 'aperezdc/vim-template'
+"Plugin 'aperezdc/vim-template'
 
 "Python Folding
 Plugin 'tmhedberg/SimpylFold'
@@ -44,9 +44,9 @@ Plugin 'tmhedberg/SimpylFold'
 "SQL Formatter
 Plugin 'vim-scripts/SQLUtilities'
 
-call vundle#end()            " required: All of your Plugins must be added before the following line
+call vundle#end()			 " required: All of your Plugins must be added before the following line
 
-filetype plugin indent on    " required
+filetype plugin indent on	 " required
 syntax on
 set number	
 set linebreak	
@@ -83,18 +83,18 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 
 
 if $TERM_PROGRAM =~ "iTerm"
-     let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
-     let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
+	 let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
+	 let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
 endif
 
 let g:EclimCompletionMethod = 'omnifunc'
 
 "Pencil softwrap
-let g:pencil#wrapModeDefault = 'soft'   " default is 'hard'
+let g:pencil#wrapModeDefault = 'soft'	" default is 'hard'
 augroup pencil
   autocmd!
   autocmd FileType markdown,mkd call pencil#init()
-  autocmd FileType text,tex         call pencil#init()
+  autocmd FileType text,tex			call pencil#init()
 augroup END
 
 "let g:tex_flavor='xelatex'
@@ -120,25 +120,30 @@ nnoremap <silent> <leader>gv :YcmCompleter GoToDeclaration<CR>
 " Indentation options
 "
 function! UseTabs()
-    set list
-    set listchars=tab:\|\ ,eol:$,lead:-
-    set tabstop=4     " Size of a hard tabstop (ts).
-    set shiftwidth=4  " Size of an indentation (sw).
-    set noexpandtab   " Always uses tabs instead of space characters (noet).
-    echo "Using Tabs"
+	set list
+	set listchars=tab:\|\ ,eol:$,lead:-
+	set tabstop=4	  " Size of a hard tabstop (ts).
+	set shiftwidth=4  " Size of an indentation (sw).
+	set noexpandtab   " Always uses tabs instead of space characters (noet).
+	"set autoindent	  " Copy indent from current line when starting a new line (ai).
+	set copyindent
+	set preserveindent
+	echo "Using Tabs"
 endfunction
 
 
 function! UseSpaces()
-    set list
-    set listchars=tab:\|\ ,lead:.,eol:$
-    set autoindent    " Copy indent from current line when starting a new line (ai).
-    set tabstop=4     " Size of a hard tabstop (ts).
-    set shiftwidth=4  " Size of an indentation (sw).
-    set expandtab     " Always uses spaces instead of tab characters (et).
-    set softtabstop=4 " Number of spaces a <Tab> counts for. When 0, featuer is off (sts).
-    set smarttab      " Inserts blanks on a <Tab> key (as per sw, ts and sts).
-    echo "Using spaces"
+	set list
+	set listchars=tab:\|\ ,lead:.,eol:$
+	"set autoindent    " Copy indent from current line when starting a new line (ai).
+	set tabstop=4	  " Size of a hard tabstop (ts).
+	set shiftwidth=4  " Size of an indentation (sw).
+	set expandtab	  " Always uses spaces instead of tab characters (et).
+	set softtabstop=4 " Number of spaces a <Tab> counts for. When 0, featuer is off (sts).
+	set smarttab	  " Inserts blanks on a <Tab> key (as per sw, ts and sts).
+	set copyindent
+	set preserveindent
+	echo "Using spaces"
 endfunction
 
 "To insert space characters whenever the tab key is pressed.
