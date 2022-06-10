@@ -1,53 +1,78 @@
 #! /bin/bash
-#
-# run_mytools_setup.sh
-# Copyright (C) 2018 yueng.delahoz <yueng.delahoz@lms-02-prod-us-e1>
-#
-# Distributed under terms of the MIT license.
-#
 
+install_dependencies(){
+echo "Installing dependencies"
 sudo add-apt-repository ppa:jonathonf/vim
+sudo apt purge vim -y
 sudo apt update
-sudo apt install -y build-essential \
-	vim \
-	cmake \
+sudo apt install -y \
+	build-essential \
 	git \
 	wget \
 	screen \
-	python3-dev
-sudo add-apt-repository --remove ppa:jonathonf/vim
+	python3-dev \
+	snapd \
+	libncurses-dev \
+	g++-8 \
+	vim
 
+sudo snap install cmake --classic
+echo "Dependencies installed"
+}
+
+setup_tools(){
+	#VIM
+	echo "Setting up vim"
+	ln -s my_tools/vim ~/.vim
+	ln -s .vim/vimrc/vimrc .vimrc
+	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+	vim +PluginInstall +qall
+	CC=gcc-8 CXX=g++-8 python3 ~/.vim/bundle/YouCompleteMe/install.py
+
+	#INPUTRC
+	echo "Setting up inputrc"
+	ln -s my_tools/inputrc/inputrc .inputrc
+
+	# SCREENRC
+	echo "Setting up screenrc"
+	ln -s my_tools/screenrc/screenrc .screenrc
+
+	# BASH
+	echo "Setting up bash"
+	ln -s my_tools/bash/bash_profile .bash_profile
+	ln -s my_tools/bash/bash_aliases .bash_aliases
+	touch ~/.my_tools_OK
+	echo "Tools are now configured"
+}
+
+delete_all(){
+	echo "Deleting eveything in ~/.vim* ~/.inputrc ~/.screenrc vim/bundle"
+	rm -rf ~/.vim*
+	rm -rf ~/.inputrc
+	rm -rf ~/.screenrc
+	rm -rf ~/.bash_profile
+	rm -rf ~/.my_tools_OK
+}
 
 cd ~
 flag=$1
-if [ "$flag" = "--delete-all" ]
-then
-    echo "Deleting eveything in ~/.vim* ~/.inputrc ~/.screenrc vim/bundle"
-    rm -rf ~/.vim*
-    rm -rf ~/.inputrc
-    rm -rf ~/.screenrc
-    rm -rf ~/.bash_profile
+if [ "$flag" = "--delete-all" ]; then
+	delete_all
+elif [ "$flag" = "--install" ]; then
+	delete_all
+	install_dependencies
+	setup_tools
+elif [ "$flag" = "--setup" ]; then
+	if [ ! -f "$HOME/.my_tools_OK" ]; then
+		setup_tools
+	else
+		echo "tools have already been installed. You can 1: run script with --delete-all to delete current configuration, and 2: run script with --install or --setup"
+	fi
 else
-    echo "Running script without flag --delete-all"
+	echo "Available options:
+		--delete-all : To delete current set up
+		--install : to install and set up tools
+		--setup" : to set up tools
+
 fi
 
-#VIM
-echo "Setting up vim"
-ln -s my_tools/vim ~/.vim
-ln -s .vim/vimrc/vimrc .vimrc
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-vim +PluginInstall +qall
-python3 ~/.vim/bundle/YouCompleteMe/install.py
-
-#INPUTRC
-echo "Setting up inputrc"
-ln -s my_tools/inputrc/inputrc .inputrc
-
-# SCREENRC
-echo "Setting up screenrc"
-ln -s my_tools/screenrc/screenrc .screenrc
-
-# BASH
-echo "Setting up bash"
-ln -s my_tools/bash/bash_profile .bash_profile
-ln -s my_tools/bash/bash_aliases .bash_aliases
