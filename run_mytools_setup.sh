@@ -23,24 +23,24 @@ echo "Dependencies installed"
 setup_tools(){
 	#VIM
 	echo "Setting up vim"
-	ln -s my_tools/vim ~/.vim
-	ln -s .vim/vimrc/vimrc .vimrc
+	ln -s $PWD/vim ~/.vim
+	ln -s $PWD/vim/vimrc/vimrc ~/.vimrc
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 	vim +PluginInstall +qall
 	CC=gcc-8 CXX=g++-8 python3 ~/.vim/bundle/YouCompleteMe/install.py
 
 	#INPUTRC
 	echo "Setting up inputrc"
-	ln -s my_tools/inputrc/inputrc .inputrc
+	ln -s $PWD/inputrc/inputrc ~/.inputrc
 
 	# SCREENRC
 	echo "Setting up screenrc"
-	ln -s my_tools/screenrc/screenrc .screenrc
+	ln -s $PWD/screenrc/screenrc ~/.screenrc
 
 	# BASH
 	echo "Setting up bash"
-	ln -s my_tools/bash/bash_profile .bash_profile
-	ln -s my_tools/bash/bash_aliases .bash_aliases
+	ln -s $PWD/bash/bash_profile ~/.bash_profile
+	ln -s $PWD/bash/bash_aliases ~/.bash_aliases
 	touch ~/.my_tools_OK
 	echo "Tools are now configured"
 }
@@ -54,7 +54,6 @@ delete_all(){
 	rm -rf ~/.my_tools_OK
 }
 
-cd ~
 flag=$1
 if [ "$flag" = "--delete-all" ]; then
 	delete_all
