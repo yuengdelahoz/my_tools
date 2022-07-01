@@ -3,7 +3,7 @@
 install_dependencies(){
 echo "Installing dependencies"
 sudo add-apt-repository ppa:jonathonf/vim
-sudo apt purge vim -y
+sudo apt purge vim cmake -y
 sudo apt update
 sudo apt install -y \
 	build-essential \
@@ -11,12 +11,13 @@ sudo apt install -y \
 	wget \
 	screen \
 	python3-dev \
-	snapd \
 	libncurses-dev \
 	g++-8 \
 	vim
+	#snapd \
 
-sudo snap install cmake --classic
+#sudo snap install cmake --classic
+sudo -H pip3 install cmake
 echo "Dependencies installed"
 }
 
